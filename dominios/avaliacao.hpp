@@ -1,12 +1,16 @@
 #ifndef AVALIACAO_HPP_INCLUDED
 #define AVALIACAO_HPP_INCLUDED
 
+#include <stdexcept>
+
+using namespace std;
+
 class Avaliacao {
     private:
             int valor; //Atributo para armazenar valor.
-            bool validar(int); //Método para validar valor.
+            void validar(int); //Método para validar valor.
     public:
-            bool setValor(int); //Método para atribuir valor.
+            void setValor(int); //Método para atribuir valor.
             int getValor() const; // Método para recuperar valor.
 };
 

@@ -1,15 +1,11 @@
 #include "dinheiro.hpp"
 
-bool Dinheiro::validar(float valor){
+void Dinheiro::validar(float valor){
     if (valor < 0 || valor > 200000)
-        return false;
-    return true;
+        throw invalid_argument("Argumento invalido.");
 }
 
-bool Dinheiro::setValor(float valor){
-    if(!validar(valor))
-        return false;
+void Dinheiro::setValor(float valor){
+    validar(valor);
     this->valor = valor;
-    return true;
 }
-

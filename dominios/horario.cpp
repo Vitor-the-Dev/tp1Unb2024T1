@@ -3,18 +3,15 @@
 #include <sstream>
 #include <iomanip>
 
-bool Horario::validar(std::string valor){
-    std::tm date = {}; // Inicializa a estrutura tm
-    std::istringstream iss(valor); // Usando std::istringstream para analisar a string
-    iss >> std::get_time(&date, "%H:%M"); // Formato da data
+void Horario::validar(string valor){
+    tm date = {}; // Inicializa a estrutura tm
+    istringstream iss(valor); // Usando istringstream para analisar a string
+    iss >> get_time(&date, "%H:%M"); // Formato da data
     if (iss.fail())
-        return false;
-    return true;
+        throw invalid_argument("Argumento invalido.");
 }
 
-bool Horario::setValor(std::string valor){
-    if(!validar(valor))
-        return false;
+void Horario::setValor(string valor){
+    validar(valor);
     this->valor = valor;
-    return true;
 }

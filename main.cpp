@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 #include <locale>
 #include "dominios/avaliacao.hpp"
 #include "dominios/codigo.hpp"
@@ -16,42 +17,170 @@
 
 using namespace std;
 
-//Adaptar trecho de código para cada classe domínio.
-
 int main() {
     setlocale(LC_ALL,"");
 
-    /* LABORATÓRIO 2 */
+    /* DOMÍNIOS */
 
-    /*//Conta
-    Codigo codigo;
-        codigo.setValor("Abc123");
-    Senha senha;
-        senha.setValor("01235");
-
-    Conta conta;
-        conta.setCodigo(codigo);
-    cout << conta.getCodigo().getValor() << endl;
-        conta.setSenha(senha);
-    cout << conta.getSenha().getValor() << endl;
-    */
-
-    /* //Viagem
-    Codigo codigo;
-        codigo.setValor("Abc123");
-    Nome nome;
-        nome.setValor("João da Silva");
+    /*
     Avaliacao avaliacao;
-        avaliacao.setValor(3);
 
-    Viagem viagem;
-        viagem.setCodigo(codigo);
-    cout << viagem.getCodigo().getValor() << endl;
-        viagem.setNome(nome);
-    cout << viagem.getNome().getValor() << endl;
-        viagem.setAvaliacao(avaliacao);
-    cout << viagem.getAvaliacao().getValor() << endl;
+    try {
+        avaliacao.setValor(3); //Escolher valor válido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    try {
+        avaliacao.setValor(10); //Escolher valor inválido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
     */
+
+    /*
+    Codigo codigo;
+
+    try {
+        codigo.setValor("Aa123"); //Escolher valor válido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    try {
+        codigo.setValor("Aa123!"); //Escolher valor inválido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+    */
+
+    /*
+    Data data;
+
+    try {
+        data.setValor("29-02-24"); //Escolher valor válido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    try {
+        data.setValor("29-02-23"); //Escolher valor inválido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    try {
+        data.setValor("31-04-24"); //Escolher valor inválido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+    */
+
+    /*
+    Dinheiro dinheiro;
+
+    try {
+        dinheiro.setValor(123456.78); //Escolher valor válido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    try {
+        dinheiro.setValor(-1); //Escolher valor inválido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+    */
+
+    /*
+    Duracao duracao;
+
+    try {
+        duracao.setValor(360); //Escolher valor válido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    try {
+        duracao.setValor(720); //Escolher valor inválido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+    */
+
+    /*
+    Horario horario;
+
+    try {
+        horario.setValor("23:56"); //Escolher valor válido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    try {
+        horario.setValor("22:60"); //Escolher valor inválido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    try {
+        horario.setValor("25:25"); //Escolher valor inválido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+    */
+
+    /*
+    Nome nome;
+
+    try {
+        nome.setValor("Nome Válido"); //Escolher valor válido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    try {
+        nome.setValor("Nome inválido por grande excesso de caracteres."); //Escolher valor inválido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+    */
+
+    /*
+    Senha senha;
+
+    try {
+        senha.setValor("01235"); //Escolher valor válido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+
+    try {
+        senha.setValor("01234"); //Escolher valor inválido.
+    }
+    catch(invalid_argument &exp){
+        cout << "Excecao : " << exp.what() << endl;
+    }
+    */
+
+    /* ENTIDADES */
 
     /* //Atividade
     Codigo codigo;
@@ -84,6 +213,19 @@ int main() {
     cout << atividade.getPreco().getValor() << endl;
         atividade.setAvaliacao(avaliacao);
     cout << atividade.getAvaliacao().getValor() << endl;
+    */
+
+    /*//Conta
+    Codigo codigo;
+        codigo.setValor("Abc123");
+    Senha senha;
+        senha.setValor("01235");
+
+    Conta conta;
+        conta.setCodigo(codigo);
+    cout << conta.getCodigo().getValor() << endl;
+        conta.setSenha(senha);
+    cout << conta.getSenha().getValor() << endl;
     */
 
     /* //Destino
@@ -132,143 +274,21 @@ int main() {
     cout << hospedagem.getAvaliacao().getValor() << endl;
     */
 
-    /* LABORATÓRIO 1 */
-
-    /*
-    Dominio dominio;
-
-    if(dominio.setValor(VALOR_VALIDO)) // Escolher valor válido.
-        cout << "Valor = " << dominio.getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-
-    if(dominio.setValor(VALOR_INVALIDO)) // Escolher valor inválido.
-        cout << "Valor = " << dominio.getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-    */
-
-    /*
-    Avaliacao avaliacao;
-
-    if(avaliacao.setValor(3)) //Escolher valor válido.
-        cout << "Valor = " << avaliacao.getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-
-    if(avaliacao.setValor(10)) //Escolher valor inválido.
-        cout << "Valor = " << avaliacao.getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-
-
-    Avaliacao *ptr;
-
-    ptr = new Avaliacao();
-
-    if(ptr->setValor(3)) //Escolher valor válido.
-        cout << "Valor = " << ptr->getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-
-    if(ptr->setValor(10)) //Escolher valor inválido.
-        cout << "Valor = " << ptr->getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-    */
-
-    /*
+    /* //Viagem
     Codigo codigo;
-
-    if(codigo.setValor("Aa123")) // Escolher valor válido.
-        cout << "Valor = " << codigo.getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-
-    if(codigo.setValor("Aa123!")) // Escolher valor inválido.
-        cout << "Valor = " << codigo.getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-    */
-
-    /*
-    Data data;
-
-    if(data.setValor("29-02-24")) // Escolher valor válido.
-        cout << "Valor = " << data.getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-
-    if(data.setValor("29-02-23")) // Escolher valor inválido.
-        cout << "Valor = " << data.getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-
-    if(data.setValor("31-04-24")) // Escolher valor inválido.
-        cout << "Valor = " << data.getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-    */
-
-    /*
-    Dinheiro dinheiro;
-
-    if(dinheiro.setValor(123456.78)) // Escolher valor válido.
-        cout << "Valor = " << dinheiro.getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-
-    if(dinheiro.setValor(-1)) // Escolher valor inválido.
-        cout << "Valor = " << dinheiro.getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-    */
-
-    /*
-    Horario horario;
-
-    if(horario.setValor("23:56")) // Escolher valor válido.
-        cout << "Valor = " << horario.getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-
-    if(horario.setValor("22:60")) // Escolher valor inválido.
-        cout << "Valor = " << horario.getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-
-    if(horario.setValor("25:25")) // Escolher valor inválido.
-        cout << "Valor = " << horario.getValor() << endl;
-    else
-        cout << "Valor invalido" << endl;
-    */
-
-    /*
+        codigo.setValor("Abc123");
     Nome nome;
+        nome.setValor("João da Silva");
+    Avaliacao avaliacao;
+        avaliacao.setValor(3);
 
-    if(nome.setValor("Nome Válido")) // Escolher valor válido.
-		cout << "Valor = " << nome.getValor() << endl;
-    else
-		cout << "Valor invalido" << endl;
-
-    if(nome.setValor("Nome inválido por grande excesso de caracteres.")) // Escolher valor inválido.
-		cout << "Valor = " << nome.getValor() << endl;
-    else
-		cout << "Valor invalido" << endl;
-    */
-
-    /*
-    Senha senha;
-
-    if(senha.setValor("01235")) // Escolher valor válido.
-		cout << "Valor = " << senha.getValor() << endl;
-    else
-		cout << "Valor invalido" << endl;
-
-    if(senha.setValor("01234")) // Escolher valor inválido.
-		cout << "Valor = " << senha.getValor() << endl;
-    else
-		cout << "Valor invalido" << endl;
+    Viagem viagem;
+        viagem.setCodigo(codigo);
+    cout << viagem.getCodigo().getValor() << endl;
+        viagem.setNome(nome);
+    cout << viagem.getNome().getValor() << endl;
+        viagem.setAvaliacao(avaliacao);
+    cout << viagem.getAvaliacao().getValor() << endl;
     */
 
     return 0;

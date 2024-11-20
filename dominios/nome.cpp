@@ -1,14 +1,11 @@
 #include "nome.hpp"
 
-bool Nome::validar(std::string valor){
+void Nome::validar(string valor){
     if (valor.length() > 30)
-        return false;
-    return true;
+        throw invalid_argument("Argumento invalido.");
 }
 
-bool Nome::setValor(std::string valor){
-    if(!validar(valor))
-        return false;
+void Nome::setValor(string valor){
+    validar(valor);
     this->valor = valor;
-    return true;
 }

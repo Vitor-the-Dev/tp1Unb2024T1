@@ -1,14 +1,11 @@
 #include "duracao.hpp"
 
-bool Duracao::validar(int valor){
+void Duracao::validar(int valor){
     if(valor < 0 || valor > 360)
-        return false;
-    return true;
+        throw invalid_argument("Argumento invalido.");
 }
 
-bool Duracao::setValor(int valor){
-    if(!validar(valor))
-        return false;
+void Duracao::setValor(int valor){
+    validar(valor);
     this->valor = valor;
-    return true;
 }

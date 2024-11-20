@@ -1,17 +1,14 @@
 #include "codigo.hpp"
 
-bool Codigo::validar(std::string valor){
+void Codigo::validar(string valor){
     for (int i = 0; i < valor.length(); i++) {
         if (!isalnum(valor[i])) {
-            return false;
+            throw invalid_argument("Argumento invalido.");
         }
     }
-    return true;
 }
 
-bool Codigo::setValor(std::string valor){
-    if(!validar(valor))
-        return false;
+void Codigo::setValor(string valor){
+    validar(valor);
     this->valor = valor;
-    return true;
 }

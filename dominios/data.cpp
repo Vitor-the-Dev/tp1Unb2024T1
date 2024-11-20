@@ -2,40 +2,33 @@
 #include <ctime>
 #include <sstream>
 #include <iomanip>
-//#include <iostream>
-
 
 bool isLeapYear(int year) {
     // Retorna verdadeiro se o ano for bissexto
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
-bool Data::validar(std::string valor){
+void Data::validar(string valor){
     // Cria a data no fomato DD-MM-AA
-    std::tm date = {}; // Inicializa a estrutura tm
-    std::istringstream iss(valor); // Usando std::istringstream para analisar a string
-    iss >> std::get_time(&date, "%d-%m-%y"); // Formato da data
+    tm date = {}; // Inicializa a estrutura tm
+    istringstream iss(valor); // Usando istringstream para analisar a string
+    iss >> get_time(&date, "%d-%m-%y"); // Formato da data
     date.tm_year += 100;
     if (iss.fail())
-        return false;
+        throw invalid_argument("Argumento invalido.");
     // Verifica o número de dias em cada mês
     if (date.tm_mon == 1) { // Fevereiro
         if (date.tm_mday > (isLeapYear(date.tm_year) ? 29 : 28)) {
-            return false;
+            throw invalid_argument("Argumento invalido.");
         }
     } else if (date.tm_mon == 3 || date.tm_mon == 5 || date.tm_mon == 8 || date.tm_mon == 10) { // Meses com 30 dias
         if (date.tm_mday > 30) {
-            return false;
+            throw invalid_argument("Argumento invalido.");
         }
     }
-    // Exibindo a data
-    //std::cout << "Data convertida: " << std::put_time(&date, "%d-%m-%Y") << std::endl; // Formato DD-MM-YYYY
-    return true;
 }
 
-bool Data::setValor(std::string valor){
-    if(!validar(valor))
-        return false;
+void Data::setValor(string valor){
+    validar(valor);
     this->valor = valor;
-    return true;
 }

@@ -1,10 +1,10 @@
 #include "senha.hpp"
-#include <algorithm> // para std::adjacent_find
+#include <algorithm> // para adjacent_find
 
-bool isValidPassword(const std::string &password) {
+void isValidPassword(const string &password) {
     // Verifica se todos os caracteres são dígitos
-    if (!std::all_of(password.begin(), password.end(), ::isdigit)) {
-        return false;
+    if (!all_of(password.begin(), password.end(), ::isdigit)) {
+        throw invalid_argument("Argumento invalido.");
     }
     // Verifica se a senha está em ordem crescente
     bool isAscending = true;
@@ -18,16 +18,15 @@ bool isValidPassword(const std::string &password) {
         }
     }
     // Se a senha está em ordem crescente ou decrescente, não é válida
-    return !isAscending && !isDescending;
+    if(!isAscending && !isDescending)
+        throw invalid_argument("Argumento invalido.");
 }
 
-bool Senha::validar(std::string valor){
-    return isValidPassword(valor);
+void Senha::validar(string valor){
+    isValidPassword(valor);
 }
 
-bool Senha::setValor(std::string valor){
-    if(!validar(valor))
-        return false;
+void Senha::setValor(string valor){
+    validar(valor);
     this->valor = valor;
-    return true;
 }
