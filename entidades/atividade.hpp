@@ -1,6 +1,14 @@
 #ifndef ATIVIDADE_HPP_INCLUDED
 #define ATIVIDADE_HPP_INCLUDED
 
+#include "../dominios/codigo.hpp"
+#include "../dominios/nome.hpp"
+#include "../dominios/data.hpp"
+#include "../dominios/horario.hpp"
+#include "../dominios/duracao.hpp"
+#include "../dominios/dinheiro.hpp"
+#include "../dominios/avaliacao.hpp"
+
 using namespace std;
 
 class Atividade {

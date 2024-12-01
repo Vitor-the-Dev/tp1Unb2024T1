@@ -1,5 +1,6 @@
 #include "senha.hpp"
 #include <algorithm> // para adjacent_find
+#include <iostream>
 
 void isValidPassword(const string &password) {
     // Verifica se todos os caracteres são dígitos
@@ -18,8 +19,9 @@ void isValidPassword(const string &password) {
         }
     }
     // Se a senha está em ordem crescente ou decrescente, não é válida
-    if(!isAscending && !isDescending)
+    if (isAscending || isDescending) {
         throw invalid_argument("Argumento invalido.");
+    }
 }
 
 void Senha::validar(string valor){

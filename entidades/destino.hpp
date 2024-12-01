@@ -1,6 +1,11 @@
 #ifndef DESTINO_HPP_INCLUDED
 #define DESTINO_HPP_INCLUDED
 
+#include "../dominios/codigo.hpp"
+#include "../dominios/nome.hpp"
+#include "../dominios/data.hpp"
+#include "../dominios/avaliacao.hpp"
+
 using namespace std;
 
 class Destino {

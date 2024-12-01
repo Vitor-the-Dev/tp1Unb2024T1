@@ -1,6 +1,9 @@
 #ifndef CONTA_HPP_INCLUDED
 #define CONTA_HPP_INCLUDED
 
+#include "../dominios/codigo.hpp"
+#include "../dominios/senha.hpp"
+
 using namespace std;
 
 class Conta {

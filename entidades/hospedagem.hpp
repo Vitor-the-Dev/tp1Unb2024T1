@@ -1,6 +1,11 @@
 #ifndef HOSPEDAGEM_HPP_INCLUDED
 #define HOSPEDAGEM_HPP_INCLUDED
 
+#include "../dominios/codigo.hpp"
+#include "../dominios/nome.hpp"
+#include "../dominios/dinheiro.hpp"
+#include "../dominios/avaliacao.hpp"
+
 using namespace std;
 
 class Hospedagem {
