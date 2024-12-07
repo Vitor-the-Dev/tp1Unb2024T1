@@ -6,6 +6,9 @@
 #include "../dominios/avaliacao.hpp"
 
 using namespace std;
+///
+/// Padrao para a representacao da viagem
+///
 
 class Viagem {
     private:
@@ -13,11 +16,41 @@ class Viagem {
             Nome nome;
             Avaliacao avaliacao;
     public:
+///
+/// Atribui um codigo a viagem, caso esse seja valido
+///
+/// @param codigo Viagem
+///
             void setCodigo(Codigo);
+///
+/// Recupera o codigo atribuido a viagem
+///
+/// @return Codigo da viagem
+///
             Codigo getCodigo() const;
+///
+/// Atribui um nome a viagem, caso esse seja valido
+///
+/// @param nome Viagem
+///
             void setNome(Nome);
+///
+/// Recupera o nome atruibuido a viagem
+///
+/// @return Nome da viagem
+///
             Nome getNome() const;
+///
+/// Atribui uma avaliacao a viagem, caso essa seja valida
+///
+/// @param avaliacao Viagem
+///
             void setAvaliacao(Avaliacao);
+///
+/// Recupera a avaliacao atribuida a viagem
+///
+/// @return Avalaiacao da viagem
+///
             Avaliacao getAvaliacao() const;
 };
 
