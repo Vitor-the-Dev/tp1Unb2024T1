@@ -8,6 +8,10 @@
 
 using namespace std;
 
+///
+/// Padrao para a representacao do destino
+///
+
 class Destino {
     private:
             Codigo codigo;
@@ -16,15 +20,65 @@ class Destino {
             Data data_fim;
             Avaliacao avaliacao;
     public:
+///
+/// Atribui um codigo ao destino, caso esse seja valdio
+///
+/// @param Codigo Destino
+///
             void setCodigo(Codigo);
+///
+/// Recupera o codigo atribuido ao destino
+///
+/// @return Codigo do destino
+///
             Codigo getCodigo() const;
+///
+/// Atribui um nome ao destino, caso esse seja valido
+///
+/// @param Nome Destino
+///
             void setNome(Nome);
+///
+/// Recupera o nome atribuido ao destino
+///
+/// @return Nome do destino
+///
             Nome getNome() const;
+///
+/// Atribui a data de chegada ao destino, caso essa seja valida
+///
+/// @param Data de chegada ao Destino
+///
             void setDataIni(Data);
+///
+/// Recupera a data da chegada ao destino
+///
+/// @return Data inicial do destino
+///
             Data getDataIni() const;
+///
+/// Atribui a data de saida do destino, caso essa seja valida
+///
+/// @param Data de saida do destino
+///
             void setDataFim(Data);
+///
+/// Recupera a data da saida do destino
+///
+/// @return Data final do destino
+///
             Data getDataFim() const;
+///
+/// Atribui uma avaliacao ao destino
+///
+/// @param Avalicao Destino
+///
             void setAvaliacao(Avaliacao);
+///
+/// Recupera a avaliacao atribuiada ao destino
+///
+/// @return Avaliacao do destino
+///
             Avaliacao getAvaliacao() const;
 };
 
