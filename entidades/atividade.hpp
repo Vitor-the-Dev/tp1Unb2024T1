@@ -10,6 +10,9 @@
 #include "../dominios/avaliacao.hpp"
 
 using namespace std;
+///
+/// Padrao para a representacao da atividade
+///
 
 class Atividade {
     private:
@@ -21,19 +24,88 @@ class Atividade {
             Dinheiro preco;
             Avaliacao avaliacao;
     public:
+///
+/// Atribui um codigo a atividade, caso esse seja valido
+///
+/// @param codigo Atividade
+///
             void setCodigo(Codigo);
+///
+/// Recupera o codigo atribuido a atividade
+///
+/// @return Codigo da atividade
+///
             Codigo getCodigo() const;
+///
+/// Atribui um nome a atividade, caso esse seja valido
+///
+/// @param nome atividade
+///
             void setNome(Nome);
+///
+/// Recupera o nome atribuido a atividade
+/// @return Nome da atividade
+///
             Nome getNome() const;
+///
+/// Atruibui uma data a atividade, caso essa seja valida
+///
+/// @param data Atividade
+///
             void setData(Data);
+///
+/// Recupera a data atribuida a atividade
+///
+/// @return Data da atividade
+///
             Data getData() const;
+///
+/// Atribui um horario a atividade, caso esse seja valido
+///
+/// @param horario Atividade
+///
             void setHorario(Horario);
+///
+/// Recupera o horario atribuido a atividade
+///
+/// @return Horario da atividade
+///
             Horario getHorario() const;
+///
+/// Atribui uma duracao a atividade, caso essa seja valida
+///
+/// @param duracao Atividade
+///
             void setDuracao(Duracao);
+///
+/// Recupera a duracao atribuida ativade
+///
+/// @return Duracao da atividade
+///
             Duracao getDuracao() const;
+///
+/// Atribui um preco a atividade, caso esse seja valido
+///
+/// @param preco Atividade
+///
             void setPreco(Dinheiro);
+///
+/// Recupera o preco atribuido a atividade
+///
+/// @return Preco da atividade
+///
             Dinheiro getPreco() const;
+///
+/// Atribui uma avaliacao a atividade, caso essa seja valida
+///
+/// @param avaliacao Atividade
+///
             void setAvaliacao(Avaliacao);
+///
+/// Recupera a avalicao atribuida a atividade
+///
+/// @return Avaliacao da atividade
+///
             Avaliacao getAvaliacao() const;
 };
 
