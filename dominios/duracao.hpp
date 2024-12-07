@@ -5,20 +5,41 @@
 
 using namespace std;
 
+///
+/// Padrão para a representação da duração.
+///
 class Duracao {
     private:
-            /// Valida o valor da data, garantindo que esteja dentro do formato permitido.
+            ///
+            /// Armazena o valor da duração (em alguma unidade definida pelo contexto da aplicação).
+            ///
+            int valor;
 
-            int valor; //Atributo para armazenar valor.
-            void validar(int); //Metodo para validar valor.
+            ///
+            /// Valida o valor da duração, garantindo que esteja dentro do formato permitido.
+            ///
+            /// @param valor Valor da duração a ser validado.
+            /// @throws invalid_argument Caso o valor não obedeça as regras estabelecidas.
+            ///
+            void validar(int);
+
     public:
-            /// Atribui um valor data
-            void setValor(int); //Metodo para atribuir valor.
-            /// recupera um valor data
-            int getValor() const; // Metodo para recuperar valor.
+            ///
+            /// Atribui um valor à duração, caso seja válido.
+            ///
+            /// @param valor Valor da duração.
+            ///
+            void setValor(int);
+
+            ///
+            /// Recupera o valor atribuído à duração.
+            ///
+            /// @return Valor da duração.
+            ///
+            int getValor() const;
 };
 
-inline int Duracao::getValor() const { //Implementacao de metodo
+inline int Duracao::getValor() const {
     return valor;
 }
 
