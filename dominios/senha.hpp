@@ -6,17 +6,40 @@
 
 using namespace std;
 
+///
+/// Padrao para a representacao da senha
+///
 class Senha {
     private:
-            /// Valida uma senha conforme as 
-            string valor; //Atributo para armazenar valor.
-            void validar(string); //M�todo para validar valor.
+            ///
+            /// Armazena o valor da senha.
+            ///
+            string valor;
+            
+            ///
+            /// Valida a senha conforme as regras definidas.
+            ///
+            /// @param valor Valor da senha a ser validada.
+            /// @throws invalid_argument Caso o valor não obedeça as regras de formatação.
+            ///
+            void validar(string);
     public:
-            void setValor(string); //M�todo para atribuir valor.
-            string getValor() const; // M�todo para recuperar valor.
+            ///
+            /// Atribui um valor a senha, caso esse seja valido.
+            ///
+            /// @param valor Valor da senha.
+            ///
+            void setValor(string);
+
+            ///
+            /// Recupera o valor atribuido a senha.
+            ///
+            /// @return Valor da senha.
+            ///
+            string getValor() const;
 };
 
-inline string Senha::getValor() const { //Implementa��o de m�todo
+inline string Senha::getValor() const {
     return valor;
 }
 
