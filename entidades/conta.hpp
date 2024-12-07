@@ -6,14 +6,38 @@
 
 using namespace std;
 
+///
+///Padrao para a representacao da conta
+///
+
 class Conta {
     private:
             Codigo codigo;
             Senha senha;
     public:
+///
+/// Atribui um codigo a conta, caso esse seja valido
+///
+/// @param codigo Conta
+///
             void setCodigo(Codigo);
+///
+/// Recupera o codigo da atribuido a conta
+///
+/// @return Codigo da conta
+///
             Codigo getCodigo() const;
+///
+/// Atribui uma senha a conta, caso essa seja valida
+///
+/// @param senha Conta
+///
             void setSenha(Senha);
+///
+/// Recupera a senha atribuida a conta
+///
+/// @return Senha da conta
+///
             Senha getSenha() const;
 };
 
