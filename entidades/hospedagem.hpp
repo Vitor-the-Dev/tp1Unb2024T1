@@ -8,6 +8,10 @@
 
 using namespace std;
 
+///
+/// Padrao para a representacao da hospedagem
+///
+
 class Hospedagem {
     private:
             Codigo codigo;
@@ -15,13 +19,53 @@ class Hospedagem {
             Dinheiro diaria;
             Avaliacao avaliacao;
     public:
+///
+/// Atribui um codigo a hospedagem, caso esse seja valido
+///
+/// @param Codigo Hospedagem
+///
             void setCodigo(Codigo);
+///
+/// Recupera o codigo atribuido a hospedagem
+///
+/// @return Codigo da hospedagem
+///
             Codigo getCodigo() const;
+///
+/// Atribui um nome a hospedagem, caso esse seja valido
+///
+/// @param Nome Hospedagem
+///
             void setNome(Nome);
+///
+/// Recupera o nome atribuido a hospedagem
+///
+/// @return Nome da hospedagem
+///
             Nome getNome() const;
+///
+/// Atribui uma diaria a hospedagem, caso essa seja valida
+///
+/// @param diaria Hospedagem
+///
             void setDiaria(Dinheiro);
+///
+/// Recupera a diaria atribuida a viagem
+///
+/// @return Diaria da hospedagem
+///
             Dinheiro getDiaria() const;
+///
+/// Atribui uma avaliacao a hospedagem, caso essa seja valida
+///
+/// @param avaliacao Hospedagem
+///
             void setAvaliacao(Avaliacao);
+///
+/// Recupera a avaliacao atribuida a hospedagem
+///
+/// @return Avaliacao da hospedagem
+///
             Avaliacao getAvaliacao() const;
 };
 
