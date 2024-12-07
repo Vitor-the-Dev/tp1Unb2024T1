@@ -6,19 +6,41 @@
 
 using namespace std;
 
+///
+/// Padrão para a representação de um horário.
+///
 class Horario {
     private:
-            /// valida e armazena um valor horario valido
-            string valor; //Atributo para armazenar valor.
-            void validar(string); //M�todo para validar valor.
+            ///
+            /// Armazena o valor do horário.
+            ///
+            string valor;
+
+            ///
+            /// Valida o valor do horário conforme as regras definidas.
+            ///
+            /// @param valor Valor do horário a ser validado.
+            /// @throws invalid_argument Caso o valor não obedeça as regras de formatação.
+            ///
+            void validar(string);
+
     public:
-            /// Atribui um valor horario
-            void setValor(string); //M�todo para atribuir valor.
-            /// recupera um valor horario atribuido
-            string getValor() const; // M�todo para recuperar valor.
+            ///
+            /// Atribui um valor ao horário, caso seja válido.
+            ///
+            /// @param valor Valor do horário.
+            ///
+            void setValor(string);
+
+            ///
+            /// Recupera o valor atribuído ao horário.
+            ///
+            /// @return Valor do horário.
+            ///
+            string getValor() const;
 };
 
-inline string Horario::getValor() const { //Implementa��o de m�todo
+inline string Horario::getValor() const {
     return valor;
 }
 
