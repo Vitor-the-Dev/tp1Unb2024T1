@@ -2,6 +2,10 @@
 #include <algorithm> // para adjacent_find
 #include <iostream>
 
+///
+/// Valida o valor informado como senha.
+///
+
 void isValidPassword(const string &password) {
     // Verifica se todos os caracteres são dígitos
     if (!all_of(password.begin(), password.end(), ::isdigit)) {
@@ -24,10 +28,26 @@ void isValidPassword(const string &password) {
     }
 }
 
+///
+/// Valida o valor informado.
+///
+
+// Método para validação de valor.
 void Senha::validar(string valor){
     isValidPassword(valor);
 }
 
+///
+/// Armazena a Senha caso o valor informado seja válido.
+///
+/// Lança exceção caso o valor informado seja inválido.
+///
+/// @param valor Senha.
+///
+/// @throw invalid_argument
+///
+
+// Método para armazenamento de valor.
 void Senha::setValor(string valor){
     validar(valor);
     this->valor = valor;

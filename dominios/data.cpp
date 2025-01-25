@@ -3,11 +3,20 @@
 #include <sstream>
 #include <iomanip>
 
+///
+/// Verifica ano bissexto.
+///
+
 bool isLeapYear(int year) {
     // Retorna verdadeiro se o ano for bissexto
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
+///
+/// Valida o valor informado.
+///
+
+// Método para validação de valor.
 void Data::validar(string valor){
     // Cria a data no fomato DD-MM-AA
     tm date = {}; // Inicializa a estrutura tm
@@ -28,6 +37,17 @@ void Data::validar(string valor){
     }
 }
 
+///
+/// Armazena a Data caso o valor informado seja válido.
+///
+/// Lança exceção caso o valor informado seja inválido.
+///
+/// @param valor Data.
+///
+/// @throw invalid_argument
+///
+
+// Método para armazenamento de valor.
 void Data::setValor(string valor){
     validar(valor);
     this->valor = valor;
