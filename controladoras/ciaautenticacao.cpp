@@ -5,14 +5,15 @@
 // Implementações de métodos de classe controladora.
 
 bool CntrIAAutenticacao::autenticar(Codigo *codigo) {
-    Senha senha;
-    string entrada;
 
     // Solicitar codigo e senha.
 
+    Senha senha;
+    string entrada;
+
     while(true) {
 
-        cout << endl << "Autenticacao de usuario." << endl << endl;
+        cout << endl << "Autenticacao de Conta." << endl << endl;
 
         try {
             cout << "Digite o codigo: ";
@@ -24,15 +25,21 @@ bool CntrIAAutenticacao::autenticar(Codigo *codigo) {
             break;
         }
         catch (const invalid_argument &exp) {
-            cout << endl << "Dado em formato incorreto." << endl;
+            cout << endl << "Codigo e/ou senha em formato incorreto." << endl;
         }
     }
 
     // Solicitar autenticação.
 
-    bool resultado = cntrISAutenticacao->autenticar(*codigo, senha);
+    string erro = "";
 
-    // Retornar resultado da autenticação.
+    if (cntrISAutenticacao->autenticar(*codigo, senha, erro)) {
+        cout << endl << "Autenticacao realizada com sucesso.";
+        return true;
+    } else {
+        cout << endl << "Falha na autenticacao.";
+        cout << endl << erro;
+        return false;
+    }
 
-    return resultado;
 }

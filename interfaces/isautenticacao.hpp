@@ -10,7 +10,7 @@ using namespace std;
 
 class ISAutenticacao {
     public:
-        virtual bool autenticar(const Codigo&, const Senha&) = 0; // Método por meio do qual é solicitado o serviço.
+        virtual bool autenticar(const Codigo&, const Senha&, string&) = 0; // Método por meio do qual é solicitado o serviço.
         virtual ~ISAutenticacao(){} // Método destrutor virtual.
 };
 

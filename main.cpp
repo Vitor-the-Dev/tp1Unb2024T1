@@ -1,11 +1,11 @@
 #include <locale>
 #include <iostream>
 #include <windows.h> // Para SetConsoleOutputCP(CP_UTF8)
-#include <stdexcept>
-#include "dominios/codigo.hpp"
 #include "controladoras/ciacontrole.hpp"
 #include "controladoras/ciaautenticacao.hpp"
-#include "stubs/sisautenticacao.hpp"
+#include "controladoras/cisautenticacao.hpp"
+#include "controladoras/ciaconta.hpp"
+#include "controladoras/cisconta.hpp"
 
 using namespace std;
 
@@ -14,20 +14,21 @@ int main() {
     SetConsoleOutputCP(CP_UTF8); // Configurar UTF-8 no console do Windows
     SetConsoleCP(CP_UTF8); // Configura a entrada do console para UTF-8
 
-    // Declarar e instanciar controladoras.
+    // Declarar, instanciar e ligar controladoras.
 
     CntrApresentacaoControle *cntrApresentacaoControle = new CntrApresentacaoControle();
+
     IAAutenticacao *cntrIAAutenticacao = new CntrIAAutenticacao();
+        cntrApresentacaoControle->setCntrApresentacaoAutenticacao(cntrIAAutenticacao);
+    ISAutenticacao *cntrISAutenticacao = new CntrISAutenticacao();
+        cntrIAAutenticacao->setCntrISAutenticacao(cntrISAutenticacao);
 
-    // Declarar e instanciar stubs.
+    IAConta *cntrIAConta = new CntrIAConta();
+        cntrApresentacaoControle->setCntrApresentacaoConta(cntrIAConta);
+    ISConta *cntrISConta = new CntrISConta();
+        cntrIAConta->setCntrISConta(cntrISConta);
 
-    ISAutenticacao *stubISAutenticacao = new StubISAutenticacao();
-
-    // Ligar controladoras e stub.
-
-    cntrApresentacaoControle->setCntrApresentacaoAutenticacao(cntrIAAutenticacao);
-    cntrIAAutenticacao->setCntrISAutenticacao(stubISAutenticacao);
-
+    //Executar Controle
 
     cntrApresentacaoControle->executar();
 
@@ -35,38 +36,9 @@ int main() {
 
     delete cntrApresentacaoControle;
     delete cntrIAAutenticacao;
-    delete stubISAutenticacao;
-/*
+    delete cntrISAutenticacao;
+    delete cntrIAConta;
+    delete cntrISConta;
 
-    bool resultado;
-
-    Codigo codigo;
-
-    while(true){
-
-        // Simular apresentação de autenticação do sistema.
-
-        cout << endl << "Tela de autenticação." << endl;
-        try{
-            // Soliciatar serviço de autenticação.
-            resultado = cntrIAAutenticacao->autenticar(&codigo);
-        }
-        catch(const runtime_error &exp){
-            cout << "Erro de sistema." << endl;
-            break;
-        }
-
-        // Criticar resultado da autenticação.
-        if(resultado) {
-            cout << endl << "Sucesso autenticacao." << endl;
-            cout << endl << "Codigo = " << codigo.getValor() << endl;
-            break;
-        }
-        else {
-            cout << endl << "Erro autenticacao." << endl;
-            break;
-        }
-    }
-*/
     return 0;
 }

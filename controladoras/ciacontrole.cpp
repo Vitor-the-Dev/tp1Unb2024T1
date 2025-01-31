@@ -19,7 +19,7 @@ void CntrApresentacaoControle::executar() {
         cout << endl<< endl << "Tela inicial de sistema." << endl;
         cout << endl << "Escolha a opcao desejada e pressione Enter:";
         cout << endl << "1. Entrar no Sistema.";
-        cout << endl << "2. Cadastrar no Sistema.";
+        cout << endl << "2. Criar Conta no Sistema.";
         cout << endl << "9. Sair do Sistema.";
         cout << endl << "Opcao: ";
 
@@ -28,7 +28,7 @@ void CntrApresentacaoControle::executar() {
             if (cin.fail()) {
                 cin.clear(); // Limpa o estado de erro
                 cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora caracteres invalidos no buffer
-                cout << "Erro: Entrada invalida. Por favor, um numero inteiro." << endl;
+                cout << "Erro: Entrada invalida. Por favor, informe um numero inteiro." << endl;
                 cout << "Opcao: ";
             } else {
                 break; // Entrada valida, sai do loop
@@ -38,15 +38,17 @@ void CntrApresentacaoControle::executar() {
         cout << "Opcao escolhida: " << to_string(opcao) << endl;
 
         switch (opcao) {
-            case 1:
+
+            case 1: // Entrar no Sistema.
                 if (cntrIAAutenticacao->autenticar(&codigo)) {
                     bool apresentar = true;
                     while (apresentar) {
 
-                        cout << endl<< endl << "Tela de selecao de servico." << endl;
+                        cout << endl << endl << "Tela de selecao de servico." << endl;
                         cout << endl << "Escolha a opcao desejada e pressione Enter:";
-                        cout << endl << "1. .";
-                        cout << endl << "2. .";
+                        cout << endl << "1. Verificar Conta no Sistema.";
+                        cout << endl << "2. Atualizar Conta no Sistema.";
+                        cout << endl << "3. Excluir Conta no Sistema.";
                         cout << endl << "9. Encerrar sessao.";
                         cout << endl << "Opcao: ";
 
@@ -55,7 +57,7 @@ void CntrApresentacaoControle::executar() {
                             if (cin.fail()) {
                                 cin.clear(); // Limpa o estado de erro
                                 cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora caracteres invalidos no buffer
-                                cout << "Erro: Entrada invalida. Por favor, um numero inteiro." << endl;
+                                cout << "Erro: Entrada invalida. Por favor, informe um numero inteiro." << endl;
                                 cout << "Opcao: ";
                             } else {
                                 break; // Entrada valida, sai do loop
@@ -65,27 +67,42 @@ void CntrApresentacaoControle::executar() {
                         cout << "Opcao escolhida: " << to_string(opcao) << endl;
 
                         switch (opcao) {
-                            case 1:
+
+                            case 1: // Verificar Conta no Sistema.
+                                CntrIAConta->ler(&codigo);
                                 break;
-                            case 2:
+
+                            case 2: // Atualizar Conta no Sistema.
+                                CntrIAConta->atualizar(&codigo);
                                 break;
-                            case 9:
+
+                            case 3: // Excluir Conta no Sistema.
+                                if (CntrIAConta->excluir(&codigo)) {
+                                    cout << endl << "Encerrando sessao." << endl;
+                                    apresentar = false;
+                                }
+                                break;
+
+                            case 9: // Encerrar sessao.
                                 apresentar = false;
                                 break;
+
                             default:
                                 cout << "Erro: Opcao invalida. Tente novamente." << endl;
                         }
 
                     }
 
-                } else {
-                    cout << endl << "Falha na autenticacao.";
                 }
                 break;
-            case 2:
+
+            case 2: // Cadastrar Conta no Sistema.
+                CntrIAConta->criar(&codigo);
                 break;
-            case 9:
+
+            case 9: // Sair do Sistema.
                 exit(0);
+
             default:
                 cout << "Erro: Opcao invalida. Tente novamente." << endl;
         }
