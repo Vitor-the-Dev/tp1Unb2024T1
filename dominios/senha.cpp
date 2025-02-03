@@ -7,6 +7,10 @@
 ///
 
 void isValidPassword(const string &password) {
+    //Verifica o tamanho da string
+    if (password.length() != 5) {
+        throw invalid_argument("Argumento invalido.");
+    }
     // Verifica se todos os caracteres são dígitos
     if (!all_of(password.begin(), password.end(), ::isdigit)) {
         throw invalid_argument("Argumento invalido.");

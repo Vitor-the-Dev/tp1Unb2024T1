@@ -6,9 +6,19 @@
 #include "controladoras/cisautenticacao.hpp"
 #include "controladoras/ciaconta.hpp"
 #include "controladoras/cisconta.hpp"
+#include "controladoras/ciaviagem.hpp"
+#include "controladoras/cisviagem.hpp"
+#include "controladoras/ciadestino.hpp"
+#include "controladoras/cisdestino.hpp"
+#include "controladoras/ciahospedagem.hpp"
+#include "controladoras/cishospedagem.hpp"
+#include "controladoras/ciaatividade.hpp"
+#include "controladoras/cisatividade.hpp"
 
-using namespace std;
-
+/**
+ * @brief Metodo responsável pela execução da aplicação.
+ * @author Luiz Felippe Enéas - 170168221
+ */
 int main() {
     setlocale(LC_ALL, ".utf8");
     SetConsoleOutputCP(CP_UTF8); // Configurar UTF-8 no console do Windows
@@ -28,6 +38,26 @@ int main() {
     ISConta *cntrISConta = new CntrISConta();
         cntrIAConta->setCntrISConta(cntrISConta);
 
+    IAViagem *cntrIAViagem = new CntrIAViagem();
+        cntrApresentacaoControle->setCntrApresentacaoViagem(cntrIAViagem);
+    ISViagem *cntrISViagem = new CntrISViagem();
+        cntrIAViagem->setCntrISViagem(cntrISViagem);
+
+    IADestino *cntrIADestino = new CntrIADestino();
+        cntrApresentacaoControle->setCntrApresentacaoDestino(cntrIADestino);
+    ISDestino *cntrISDestino = new CntrISDestino();
+        cntrIADestino->setCntrISDestino(cntrISDestino);
+
+    IAHospedagem *cntrIAHospedagem = new CntrIAHospedagem();
+        cntrApresentacaoControle->setCntrApresentacaoHospedagem(cntrIAHospedagem);
+    ISHospedagem *cntrISHospedagem = new CntrISHospedagem();
+        cntrIAHospedagem->setCntrISHospedagem(cntrISHospedagem);
+
+    IAAtividade *cntrIAAtividade = new CntrIAAtividade();
+        cntrApresentacaoControle->setCntrApresentacaoAtividade(cntrIAAtividade);
+    ISAtividade *cntrISAtividade = new CntrISAtividade();
+        cntrIAAtividade->setCntrISAtividade(cntrISAtividade);
+
     //Executar Controle
 
     cntrApresentacaoControle->executar();
@@ -39,6 +69,12 @@ int main() {
     delete cntrISAutenticacao;
     delete cntrIAConta;
     delete cntrISConta;
+    delete cntrIADestino;
+    delete cntrISDestino;
+    delete cntrIAHospedagem;
+    delete cntrISHospedagem;
+    delete cntrIAAtividade;
+    delete cntrISAtividade;
 
     return 0;
 }

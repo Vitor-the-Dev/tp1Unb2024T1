@@ -6,6 +6,10 @@
 
 using namespace std;
 
+/**
+ * @brief Metodo responsável pela execução do controle da aplicação.
+ * @author Luiz Felippe Enéas - 170168221
+ */
 void CntrApresentacaoControle::executar() {
     setlocale(LC_ALL, ".utf8");
     SetConsoleOutputCP(CP_UTF8); // Configurar UTF-8 no console do Windows
@@ -16,7 +20,7 @@ void CntrApresentacaoControle::executar() {
     int opcao;
     while (true) {
 
-        cout << endl<< endl << "Tela inicial de sistema." << endl;
+        cout << endl<< endl << "Tela inicial de sistema de viagem." << endl;
         cout << endl << "Escolha a opcao desejada e pressione Enter:";
         cout << endl << "1. Entrar no Sistema.";
         cout << endl << "2. Criar Conta no Sistema.";
@@ -46,11 +50,27 @@ void CntrApresentacaoControle::executar() {
 
                         cout << endl << endl << "Tela de selecao de servico." << endl;
                         cout << endl << "Escolha a opcao desejada e pressione Enter:";
-                        cout << endl << "1. Verificar Conta no Sistema.";
-                        cout << endl << "2. Atualizar Conta no Sistema.";
-                        cout << endl << "3. Excluir Conta no Sistema.";
-                        cout << endl << "9. Encerrar sessao.";
-                        cout << endl << "Opcao: ";
+                        cout << endl << "Conta ................... Hospedagem ..............";
+                        cout << endl << "01. Listar contas ....... 30. Criar hospedagem.....";
+                        cout << endl << "02. Consultar conta ..... 31. Listar hospedagens...";
+                        cout << endl << "03. Atualizar conta ..... 32. Consultar hospedagem.";
+                        cout << endl << "04. Excluir conta ....... 33. Atualizar hospedagem.";
+                        cout << endl << "......................... 34. Excluir hospedagem...";
+                        cout << endl << "Viagem ............................................";
+                        cout << endl << "10. Criar viagem ........ Atividade................";
+                        cout << endl << "11. Listar viagens ...... 40. Criar atividade......";
+                        cout << endl << "12. Consultar viagem .... 41. Listar atividades....";
+                        cout << endl << "13. Atualizar viagem .... 42. Consultar atividade..";
+                        cout << endl << "14. Excluir viagem ...... 43. Atualizar atividade..";
+                        cout << endl << "......................... 44. Excluir atividade....";
+                        cout << endl << "Destino ...........................................";
+                        cout << endl << "20. Criar destino ....... Sessao...................";
+                        cout << endl << "21. Listar destinos ......99. Encerrar sessao......";
+                        cout << endl << "22. Consultar destino .............................";
+                        cout << endl << "23. Atualizar destino .............................";
+                        cout << endl << "24. Excluir destino ...............................";
+
+                        cout << endl << endl << "Opcao: ";
 
                         while (true) {
                             cin >> opcao;
@@ -68,27 +88,99 @@ void CntrApresentacaoControle::executar() {
 
                         switch (opcao) {
 
-                            case 1: // Verificar Conta no Sistema.
-                                CntrIAConta->ler(&codigo);
+                            // Conta
+                            case 1: // Listar Contas no Sistema.
+                                cntrIAConta->listar();
                                 break;
-
-                            case 2: // Atualizar Conta no Sistema.
-                                CntrIAConta->atualizar(&codigo);
+                            case 2: // Consultar Conta no Sistema.
+                                cntrIAConta->ler(&codigo);
                                 break;
-
-                            case 3: // Excluir Conta no Sistema.
-                                if (CntrIAConta->excluir(&codigo)) {
+                            case 3: // Atualizar Conta no Sistema.
+                                cntrIAConta->atualizar(&codigo);
+                                break;
+                            case 4: // Excluir Conta no Sistema.
+                                if (cntrIAConta->excluir(&codigo)) {
                                     cout << endl << "Encerrando sessao." << endl;
                                     apresentar = false;
                                 }
                                 break;
 
-                            case 9: // Encerrar sessao.
+                            // Viagem
+                            case 10: // Criar Viagem no Sistema.
+                                cntrIAViagem->criar();
+                                break;
+                            case 11: // Listar Viagem no Sistema.
+                                cntrIAViagem->listar();
+                                break;
+                            case 12: // Consultar Viagem no Sistema.
+                                cntrIAViagem->ler();
+                                break;
+                            case 13: // Atualizar Viagem no Sistema.
+                                cntrIAViagem->atualizar();
+                                break;
+                            case 14: // Excluir Viagem no Sistema.
+                                cntrIAViagem->excluir();
+                                break;
+
+                            // Destino
+                            case 20: // Criar Destino no Sistema.
+                                cntrIADestino->criar();
+                                break;
+                            case 21: // Listar Destino no Sistema.
+                                cntrIADestino->listar();
+                                break;
+                            case 22: // Consultar Destino no Sistema.
+                                cntrIADestino->ler();
+                                break;
+                            case 23: // Atualizar Destino no Sistema.
+                                cntrIADestino->atualizar();
+                                break;
+                            case 24: // Excluir Destino no Sistema.
+                                cntrIADestino->excluir();
+                                break;
+
+                            // Hospedagem
+                            case 30: // Criar Hospedagem no Sistema.
+                                cntrIAHospedagem->criar();
+                                break;
+                            case 31: // Listar Hospedagem no Sistema.
+                                cntrIAHospedagem->listar();
+                                break;
+                            case 32: // Consultar Hospedagem no Sistema.
+                                cntrIAHospedagem->ler();
+                                break;
+                            case 33: // Atualizar Hospedagem no Sistema.
+                                cntrIAHospedagem->atualizar();
+                                break;
+                            case 34: // Excluir Hospedagem no Sistema.
+                                cntrIAHospedagem->excluir();
+                                break;
+
+                            // Atividade
+                            case 40: // Criar Atividade no Sistema.
+                                cntrIAAtividade->criar();
+                                break;
+                            case 41: // Listar Atividade no Sistema.
+                                cntrIAAtividade->listar();
+                                break;
+                            case 42: // Consultar Atividade no Sistema.
+                                cntrIAAtividade->ler();
+                                break;
+                            case 43: // Atualizar Atividade no Sistema.
+                                cntrIAAtividade->atualizar();
+                                break;
+                            case 44: // Excluir Atividade no Sistema.
+                                cntrIAAtividade->excluir();
+                                break;
+
+                            // Encerrar sessao.
+                            case 99:
                                 apresentar = false;
                                 break;
 
                             default:
                                 cout << "Erro: Opcao invalida. Tente novamente." << endl;
+
                         }
 
                     }
@@ -97,7 +189,7 @@ void CntrApresentacaoControle::executar() {
                 break;
 
             case 2: // Cadastrar Conta no Sistema.
-                CntrIAConta->criar(&codigo);
+                cntrIAConta->criar(&codigo);
                 break;
 
             case 9: // Sair do Sistema.

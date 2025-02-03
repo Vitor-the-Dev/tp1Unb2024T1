@@ -1,12 +1,16 @@
 #ifndef CNCONTA_HPP_INCLUDED
 #define CNCONTA_HPP_INCLUDED
 
+#include <map>
+#include <vector>
 #include <list>
 #include "../entidades/conta.hpp"
+#include "../entidades/viagem.hpp"
 
 /**
  * @class ContainerConta
  * @brief Classe responsável por armazenar e gerenciar entidades do tipo Conta.
+ * @author Davi Cesar Silva Borges - 190105054
  *
  * Esta classe utiliza a STL (`std::list`) para manter uma coleção de objetos
  * do tipo Conta, oferecendo métodos para inclusão, remoção, pesquisa e atualização.
@@ -14,6 +18,7 @@
 class ContainerConta {
     private:
         std::list<Conta> contas;  ///< Lista interna de objetos Conta.
+        std::map<Conta, std::vector<Viagem>> conta_viagens;  // Mapeia um objeto Conta para suas viagens
         static ContainerConta *instancia; // Ponteiro para instância da classe.
         ContainerConta(); // Construtor.
     public:
@@ -29,6 +34,14 @@ class ContainerConta {
          * @return false se já existir conta com o mesmo código.
          */
         bool criar(const Conta &conta);
+
+        /**
+         * @brief Lista as contas do contêiner.
+         *
+         * @return true se a conta foi encontrada,
+         * @return false caso contrário.
+         */
+        bool listar(std::list<Conta> *listaContas);
 
         /**
          * @brief Lê uma conta no contêiner, usando o código contido no parâmetro `conta`.
@@ -68,6 +81,12 @@ class ContainerConta {
          * @return false caso a conta não seja encontrada.
          */
         bool excluir(const Codigo &codigo);
+
+        void adicionarViagemParaConta(const Conta& conta, const Viagem& viagem);
+
+        bool removerViagemDeConta(const Conta& conta, const Viagem& viagem);
+
+        std::vector<Viagem> getViagensPorConta(const Conta& conta) const;
 };
 
 #endif // CNCONTA_HPP_INCLUDED

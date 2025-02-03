@@ -3,6 +3,11 @@
 
 using namespace std;
 
+/**
+ * @brief Autentica usuário.
+ * @return true se codigo localizado,
+ * @return false se nao localizado.
+ */
 bool CntrISAutenticacao::autenticar(const Codigo &codigo, const Senha &senha, string &erro){
 
     // Instancia container de Contas.

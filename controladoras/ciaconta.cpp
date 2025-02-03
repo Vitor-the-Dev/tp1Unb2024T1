@@ -1,23 +1,27 @@
 #include <iostream>
 #include <limits> // Para std::numeric_limits
+#include <list>
 #include "../dominios/senha.hpp"
 #include "../entidades/conta.hpp"
 #include "ciaconta.hpp"
 
 // Implementações de métodos de classe controladora.
 
+/**
+ * @brief Solicita dados para criar uma nova conta no contêiner.
+ * @return true se a conta foi incluída com sucesso,
+ * @return false se já existir uma conta com o mesmo código.
+ */
 bool CntrIAConta::criar(Codigo *codigo) {
 
     cout << endl << "Criacao de Conta." << endl << endl;
-
-    // Solicitar codigo e senha da conta.
 
     Senha senha;
 
     string entrada;
     while(true) {
         try {
-            cout << "Digite o codigo: ";
+            cout << "Digite o codigo da Conta: ";
                 cin >> entrada;
                 codigo->setValor(entrada);
             cout << "Digite a senha: ";
@@ -26,32 +30,59 @@ bool CntrIAConta::criar(Codigo *codigo) {
             break;
         }
         catch (const invalid_argument &exp) {
-            cout << endl << "Codigo e/ou senha em formato incorreto." << endl;
+            cout << endl << "Valor informado em formato incorreto." << endl;
         }
     }
 
-    // Instancia Conta a ser cadastrada.
     Conta conta;
     conta.setCodigo(*codigo);
     conta.setSenha(senha);
 
-    // Solicitar criacao da conta.
-
     string erro = "";
     if (cntrISConta->criar(conta, erro)) {
-        cout << endl << "Criacao da conta realizada com sucesso.";
+        cout << endl << "Criacao da conta realizada com sucesso." << endl;
         return true;
     } else {
         cout << endl << "Falha na criacao da conta.";
-        cout << endl << erro;
+        cout << endl << erro << endl;
         return false;
     }
 
 }
 
+/**
+ * @brief Solicita listar as viagens no contêiner.
+ * @return true se foram listadas com sucesso,
+ * @return false se não foram.
+ */
+bool CntrIAConta::listar() {
+
+    cout << endl << "Listagem de Contas." << endl << endl;
+
+    std::list<Conta> contas;
+
+    string erro = "";
+    if (cntrISConta->listar(contas, erro)) {
+        for (auto &conta : contas) {
+            cout << endl << "Codigo: " << conta.getCodigo().getValor();
+        }
+        return true;
+    } else {
+        cout << endl << "Falha na listagens das contas.";
+        cout << endl << erro << endl;
+        return false;
+    }
+
+}
+
+/**
+ * @brief Solicita dados para ler uma conta no contêiner.
+ * @return true se a conta foi lida com sucesso,
+ * @return false se não foi.
+ */
 bool CntrIAConta::ler(Codigo *codigo) {
 
-    cout << endl << "Verificacao de Conta." << endl << endl;
+    cout << endl << "Consulta de Conta." << endl << endl;
 
     // Instancia Conta a ser verificada.
     Conta conta;
@@ -66,7 +97,7 @@ bool CntrIAConta::ler(Codigo *codigo) {
             break;
         }
         catch (const invalid_argument &exp) {
-            cout << endl << "Codigo em formato incorreto." << endl;
+            cout << endl << "Valor informado em formato incorreto." << endl;
         }
     }
 
@@ -76,15 +107,21 @@ bool CntrIAConta::ler(Codigo *codigo) {
 
     string erro = "";
     if (cntrISConta->ler(conta, erro)) {
-        cout << endl << "Verificacao da conta realizada com sucesso.";
+        cout << endl << "Consulta da conta realizada com sucesso." << endl;
         return true;
     } else {
         cout << endl << "Falha na verificacao da conta.";
-        cout << endl << erro;
+        cout << endl << erro << endl;
         return false;
     }
+
 }
 
+/**
+ * @brief Solicita dados para atualizar uma conta no contêiner.
+ * @return true se a conta foi atualizada com sucesso,
+ * @return false se não foi.
+ */
 bool CntrIAConta::atualizar(Codigo *codigo) {
 
     cout << endl << "Atualizacao de Conta." << endl << endl;
@@ -105,7 +142,7 @@ bool CntrIAConta::atualizar(Codigo *codigo) {
             break;
         }
         catch (const invalid_argument &exp) {
-            cout << endl << "Senha em formato incorreto." << endl;
+            cout << endl << "Valor informado em formato incorreto." << endl;
         }
     }
 
@@ -115,16 +152,21 @@ bool CntrIAConta::atualizar(Codigo *codigo) {
 
     string erro = "";
     if (cntrISConta->atualizar(conta, erro)) {
-        cout << endl << "Atualizacao da conta realizada com sucesso.";
+        cout << endl << "Atualizacao da conta realizada com sucesso." << endl;
         return true;
     } else {
         cout << endl << "Falha na atualizacao da conta.";
-        cout << endl << erro;
+        cout << endl << erro << endl;
         return false;
     }
 
 }
 
+/**
+ * @brief Solicita dados para excluir uma conta no contêiner.
+ * @return true se a conta foi excluída com sucesso,
+ * @return false se não foi.
+ */
 bool CntrIAConta::excluir(Codigo *codigo) {
 
     cout << endl << "Exclusao de Conta." << endl;
@@ -132,9 +174,9 @@ bool CntrIAConta::excluir(Codigo *codigo) {
     // Solicitar confirmacao da exclusao da conta.
 
     cout << endl << "Voce realmente deseja excluir a sua conta (codigo: " << codigo->getValor() << ")?" << endl;
-    cout << endl << "1. Sim.";
-    cout << endl << "2. Nao.";
-    cout << endl << "Opcao: ";
+    cout << "1. Sim.";
+    cout << "2. Nao.";
+    cout << "Opcao: ";
 
     int opcao;
     while (true) {
@@ -151,15 +193,13 @@ bool CntrIAConta::excluir(Codigo *codigo) {
 
     if (opcao == 1) { // confirma exclusão
 
-        // Solicitar exclusao da conta.
-
         string erro = "";
         if (cntrISConta->excluir(*codigo, erro)) {
             cout << endl << "Exclusao da conta realizada com sucesso." << endl;
             return true;
         } else {
-            cout << endl << "Falha na exclusao da conta." << endl;
-            cout << endl << erro;
+            cout << endl << "Falha na exclusao da conta.";
+            cout << endl << erro << endl;
             return false;
         }
 
@@ -168,4 +208,67 @@ bool CntrIAConta::excluir(Codigo *codigo) {
         return false;
     }
 
+}
+
+/**
+ * @brief Lista as viagens associadas a uma conta.
+ */
+bool CntrIAConta::listarViagensPorConta(Codigo* codigoConta) {
+
+    cout << endl << "Viagens vinculadas a Conta." << endl;
+
+    vector<Viagem> viagens;
+    string erro;
+
+    Conta conta;
+    conta.setCodigo(*codigoConta);
+
+    if (!cntrISConta->listarViagensPorConta(conta, viagens, erro)) {
+        cout << erro << endl;
+        return false;
+    }
+
+    for (const auto& viagem : viagens) {
+        cout << "Código: " << viagem.getCodigo().getValor() << ", Nome: " << viagem.getNome().getValor() << endl;
+    }
+
+    return true;
+}
+
+/**
+ * @brief Adiciona uma viagem a uma conta.
+ */
+bool CntrIAConta::adicionarViagemParaConta(Codigo* codigoConta) {
+
+    cout << endl << "Vincular Viagem a Conta." << endl;
+
+    Conta conta;
+    conta.setCodigo(*codigoConta);
+
+    Codigo codigoViagem;
+
+    string entrada;
+    while(true) {
+        try {
+            cout << "Digite o codigo da viagem: ";
+                cin >> entrada;
+                codigoViagem.setValor(entrada);
+            break;
+        }
+        catch (const invalid_argument &exp) {
+            cout << endl << "Valor informado em formato incorreto." << endl;
+        }
+    }
+
+    Viagem viagem;
+    viagem.setCodigo(codigoViagem);
+
+    string erro;
+    if (!cntrISConta->adicionarViagemParaConta(conta, viagem, erro)) {
+        cout << erro << endl;
+        return false;
+    }
+
+    cout << endl << "Viagem adicionada com sucesso a conta!" << endl;
+    return true;
 }

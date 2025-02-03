@@ -4,6 +4,11 @@
 
 // Implementações de métodos de classe controladora.
 
+/**
+ * @brief Solicita dados para autenticar usuário.
+ * @return true se autenticacao realizada com sucesso,
+ * @return false se nao realizada.
+ */
 bool CntrIAAutenticacao::autenticar(Codigo *codigo) {
 
     // Solicitar codigo e senha.

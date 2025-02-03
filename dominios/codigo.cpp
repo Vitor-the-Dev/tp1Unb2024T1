@@ -6,6 +6,9 @@
 
 // Método para validação de valor.
 void Codigo::validar(string valor){
+    if (valor.length() != 6) {
+        throw invalid_argument("Argumento invalido.");
+    }
     for (size_t i = 0; i < valor.length(); i++) {
         if (!isalnum(valor[i])) {
             throw invalid_argument("Argumento invalido.");
